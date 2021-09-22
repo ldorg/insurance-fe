@@ -1,9 +1,19 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const auth = useAuth();
+  const history = useHistory();
+
+  const formSubmit = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    auth.signIn(username, password);
+    history.push("/");
+  };
 
   return (
     <div className="mx-auto w-full max-w-sm lg:w-96">
@@ -27,7 +37,7 @@ const LoginForm = () => {
 
       <div className="mt-8">
         <div className="mt-6">
-          <form action="#" method="POST" className="space-y-6">
+          <form onSubmit={formSubmit} className="space-y-6">
             <div>
               <label
                 htmlFor="username"

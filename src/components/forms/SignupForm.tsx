@@ -1,7 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
 const SignupForm = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [betaUser, setBetaUser] = useState(false);
+
+  const auth = useAuth();
+  const history = useHistory();
+
+  const formSubmit = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    auth.register(username, password, betaUser);
+    history.push("/");
+  };
   return (
     <div className="mx-auto w-full max-w-sm lg:w-96">
       <div>
@@ -24,7 +37,7 @@ const SignupForm = () => {
 
       <div className="mt-8">
         <div className="mt-6">
-          <form action="#" method="POST" className="space-y-6">
+          <form onSubmit={formSubmit} className="space-y-6">
             <div>
               <label
                 htmlFor="username"
@@ -39,6 +52,8 @@ const SignupForm = () => {
                   type="text"
                   autoComplete="username"
                   required
+                  value={username}
+                  onChange={(event) => setUsername(event.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
               </div>
@@ -58,6 +73,8 @@ const SignupForm = () => {
                   type="password"
                   autoComplete="current-password"
                   required
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
               </div>
@@ -69,13 +86,15 @@ const SignupForm = () => {
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
+                  checked={betaUser}
+                  onChange={(event) => setBetaUser(event.target.checked)}
                   className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                 />
                 <label
                   htmlFor="remember-me"
                   className="ml-2 block text-sm text-gray-900"
                 >
-                  Remember me
+                  Become a beta user?
                 </label>
               </div>
 
