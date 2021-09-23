@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { flags } from "../../lib/flags";
 
 const HomeHero = () => {
   return (
@@ -31,13 +32,21 @@ const HomeHero = () => {
               <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
                 <Link
                   to="/signup"
-                  className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-blue-700 bg-white hover:bg-blue-50 sm:px-8"
+                  className={`flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm bg-white ${
+                    flags.contrastButtons.isEnabled()
+                      ? "text-yellow-700 hover:bg-yellow-50"
+                      : "text-blue-700 hover:bg-blue-50"
+                  } sm:px-8`}
                 >
                   Get started
                 </Link>
                 <Link
                   to="/plans"
-                  className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-500 bg-opacity-60 hover:bg-opacity-70 sm:px-8"
+                  className={`flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white ${
+                    flags.contrastButtons.isEnabled()
+                      ? "bg-yellow-500"
+                      : "bg-blue-500"
+                  } bg-opacity-60 hover:bg-opacity-70 sm:px-8`}
                 >
                   Explore plans
                 </Link>

@@ -1,6 +1,6 @@
 import Rox from "rox-browser";
 
-const flags = {
+export const flags = {
   contrastButtons: new Rox.Flag(),
 };
 
@@ -9,7 +9,7 @@ async function initRollout() {
 
   Rox.register("frontend", flags);
 
-  await Rox.setup("614cb9429c58545c995db1d5", options);
+  await Rox.setup(import.meta.env.VITE_FM_KEY, options);
 }
 
 initRollout().then(function () {

@@ -12,6 +12,7 @@ import { ChevronDownIcon } from "@heroicons/react/solid";
 import { classNames } from "../../lib/utils";
 import { Link } from "react-router-dom";
 import Rox from "rox-browser";
+import { flags } from "../../lib/flags";
 
 const solutions = [
   {
@@ -151,13 +152,17 @@ const MarketingNav = () => {
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
             <Link
               to="/signup"
-              className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+              className={
+                flags.contrastButtons.isEnabled()
+                  ? "ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-yellow-600 hover:bg-yellow-700"
+                  : "mr-4 whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+              }
             >
               Sign up
             </Link>
             <Link
               to="/login"
-              className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700"
+              className="ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700"
             >
               Member Login
             </Link>
