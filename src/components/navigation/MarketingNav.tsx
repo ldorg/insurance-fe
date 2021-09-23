@@ -11,6 +11,7 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { classNames } from "../../lib/utils";
 import { Link } from "react-router-dom";
+import Rox from "rox-browser";
 
 const solutions = [
   {
@@ -49,15 +50,25 @@ const MarketingNav = () => {
     <header>
       <Popover className="relative bg-white">
         <div className="flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
-          <div className="flex justify-start lg:w-0 lg:flex-1">
+          <div className="flex justify-start lg:w-0 lg:flex-1 items-center">
             <Link to="/">
               <span className="sr-only">InsuranceHive</span>
               <img
-                className="h-8 w-auto sm:h-10"
+                className="h-8 w-8 sm:h-10"
                 src="/src/favicon.svg"
                 alt="Logo"
               />
             </Link>
+
+            <button
+              onClick={() => {
+                Rox.showOverrides();
+              }}
+              type="button"
+              className="ml-4 px-3 py-1 bg-blue-600 rounded-md text-white hover:bg-blue-700"
+            >
+              DEV
+            </button>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
             <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">

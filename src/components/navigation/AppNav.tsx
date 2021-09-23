@@ -4,6 +4,7 @@ import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { classNames } from "../../lib/utils";
 import { SearchIcon } from "@heroicons/react/solid";
 import { useAuth } from "../../hooks/useAuth";
+import Rox from "rox-browser";
 
 const navigation = [
   { name: "Home", href: "#", current: true },
@@ -33,16 +34,20 @@ const AppNav = () => {
         <>
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             <div className="relative flex flex-wrap items-center justify-center lg:justify-between">
-              {/* Logo */}
-              <div className="absolute left-0 py-5 flex-shrink-0 lg:static">
-                <a href="#">
+              <div className="absolute left-0 py-5 flex-shrink-0 lg:static flex">
+                <a href="/">
                   <span className="sr-only">InsuranceHive</span>
-                  <img
-                    src="./src/favicon.svg"
-                    alt="Logo"
-                    className="h-8 w-auto"
-                  />
+                  <img src="./src/favicon.svg" alt="Logo" className="h-8 w-8" />
                 </a>
+                <button
+                  onClick={() => {
+                    Rox.showOverrides();
+                  }}
+                  type="button"
+                  className="ml-4 px-3 py-1 bg-blue-600 rounded-md text-white hover:bg-blue-700"
+                >
+                  DEV
+                </button>
               </div>
 
               <div className="hidden lg:ml-4 lg:flex lg:items-center lg:py-5 lg:pr-0.5">

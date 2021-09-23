@@ -8,6 +8,7 @@ specifiers:
   '@types/react': ^17.0.0
   '@types/react-dom': ^17.0.0
   '@types/react-router-dom': ^5.1.9
+  '@types/rox-browser': ^5.0.2
   '@vitejs/plugin-react-refresh': ^1.3.1
   autoprefixer: ^10.3.4
   axios: ^0.21.4
@@ -16,6 +17,7 @@ specifiers:
   react: ^17.0.0
   react-dom: ^17.0.0
   react-router-dom: ^5.3.0
+  rox-browser: ^5.1.0
   tailwindcss: ^2.2.15
   typescript: ^4.3.2
   vite: ^2.5.4
@@ -28,12 +30,14 @@ dependencies:
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-router-dom: 5.3.0_react@17.0.2
+  rox-browser: 5.1.0
 
 devDependencies:
   '@tailwindcss/forms': 0.3.3_tailwindcss@2.2.15
   '@types/react': 17.0.22
   '@types/react-dom': 17.0.9
   '@types/react-router-dom': 5.1.9
+  '@types/rox-browser': 5.0.2
   '@vitejs/plugin-react-refresh': 1.3.6
   autoprefixer: 10.3.4_postcss@8.3.6
   postcss: 8.3.6
@@ -395,6 +399,10 @@ packages:
       csstype: 3.0.9
     dev: true
 
+  /@types/rox-browser/5.0.2:
+    resolution: {integrity: sha512-H1S6xyGlTmJwG6QdNqbuIB7bbq4qPbyOZ/UxGi9/T7km7q+k5EfCK1EJv3EfBIofOPdejXh7Y8UeuFOkTtCh1A==}
+    dev: true
+
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
     dev: true
@@ -472,6 +480,14 @@ packages:
       postcss: 8.3.6
       postcss-value-parser: 4.1.0
     dev: true
+
+  /axios/0.21.1:
+    resolution: {integrity: sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==}
+    dependencies:
+      follow-redirects: 1.14.4
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /axios/0.21.4:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
@@ -1361,6 +1377,14 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  /rox-browser/5.1.0:
+    resolution: {integrity: sha512-cepjTuvbZOL3mm38a594bZdAJzBtMGOLWAtvrkmepwrHxARwo/y/VRNZdbSWPf+BHReVWI/91PI6O9DtSnWhRQ==}
+    dependencies:
+      axios: 0.21.1
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /run-parallel/1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}

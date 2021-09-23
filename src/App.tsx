@@ -7,6 +7,7 @@ import Signup from "./pages/Signup";
 import Plans from "./pages/Plans";
 import { ProvideAuth, useAuth } from "./hooks/useAuth";
 import Dashboard from "./pages/Dashboard";
+import "./lib/flags";
 
 function App() {
   return (
