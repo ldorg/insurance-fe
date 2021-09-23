@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import useLocalStorage from "./useLocalStorage";
 
 // @ts-ignore
 const authContext = createContext();
@@ -23,10 +23,12 @@ interface IAuth {
   signIn: Function;
   signOut: Function;
   register: Function;
+  error: string;
 }
 
 const useProvideAuth = (): IAuth => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useLocalStorage("auth", null);
+  const [error, setError] = useState("");
 
   const signIn = (username: string, password: string) => {
     axios
@@ -35,7 +37,13 @@ const useProvideAuth = (): IAuth => {
         password,
       })
       .then((r) => {
-        setUser(r.data);
+        setError("");
+        if (r.data.username) {
+          setUser(r.data);
+        }
+        if (r.data.error) {
+          setError(r.data.error);
+        }
       });
   };
 
@@ -47,8 +55,12 @@ const useProvideAuth = (): IAuth => {
         betaUser,
       })
       .then((r) => {
+        setError("");
         if (r.data.username) {
           setUser(r.data);
+        }
+        if (r.data.error) {
+          setError(r.data.error);
         }
       });
   };
@@ -62,5 +74,6 @@ const useProvideAuth = (): IAuth => {
     signIn,
     signOut,
     register,
+    error,
   };
 };

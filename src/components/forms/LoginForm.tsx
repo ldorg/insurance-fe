@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import LoginError from "../error/Error";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -12,6 +13,9 @@ const LoginForm = () => {
   const formSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     auth.signIn(username, password);
+    if (auth.error) {
+      return;
+    }
     history.push("/");
   };
 
@@ -38,6 +42,7 @@ const LoginForm = () => {
       <div className="mt-8">
         <div className="mt-6">
           <form onSubmit={formSubmit} className="space-y-6">
+            <LoginError />
             <div>
               <label
                 htmlFor="username"
