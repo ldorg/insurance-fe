@@ -32,7 +32,7 @@ const useProvideAuth = (): IAuth => {
 
   const signIn = (username: string, password: string) => {
     axios
-      .post("http://localhost:8000/login", {
+      .post(`${import.meta.env.VITE_BACKEND_URL}/login`, {
         username,
         password,
       })
@@ -49,7 +49,7 @@ const useProvideAuth = (): IAuth => {
 
   const register = (username: string, password: string, betaUser: boolean) => {
     axios
-      .post("http://localhost:8000/register", {
+      .post(`${import.meta.env.VITE_BACKEND_URL}/register`, {
         username,
         password,
         betaUser,

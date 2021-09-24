@@ -23,7 +23,11 @@ const LoginForm = () => {
     <div className="mx-auto w-full max-w-sm lg:w-96">
       <div>
         <Link to="/">
-          <img className="h-12 w-auto" src="/src/favicon.svg" alt="Workflow" />
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8">
+            <text y="32" fontSize="32">
+              🐝
+            </text>
+          </svg>
         </Link>
         <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
           Sign in to your account
