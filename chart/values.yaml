@@ -29,3 +29,6 @@ ingress:
     - secretName: insurance-frontend-tls
       hosts:
         - example.com
+
+backendUrl: https://example.com
+fmToken: 614cb9429c58545c995db1d5
