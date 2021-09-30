@@ -3,9 +3,19 @@ import Rox from "rox-browser";
 export const flags = {
   contrastButtons: new Rox.Flag(),
 };
+export const flagStore: {
+  [key: string]: any;
+} = {};
 
+const impressionHandler = (reporting: {
+  name: string | number;
+  value: any;
+}) => {
+  flagStore[reporting.name] = reporting.value;
+  console.log(JSON.stringify(flagStore));
+};
 async function initRollout() {
-  const options = {};
+  const options = { impressionHandler };
 
   Rox.register("frontend", flags);
 

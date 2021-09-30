@@ -19,6 +19,7 @@ function App() {
 
 function AppRouter() {
   const auth = useAuth();
+
   return (
     <Router>
       <Switch>

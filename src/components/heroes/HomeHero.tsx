@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { flags } from "../../lib/flags";
-
+import { flags, flagStore } from "../../lib/flags";
+import { event } from "../../lib/gtm";
 const HomeHero = () => {
   return (
     <div className="relative">
@@ -32,6 +32,13 @@ const HomeHero = () => {
               <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
                 <Link
                   to="/signup"
+                  onClick={() =>
+                    event({
+                      action: "signup",
+                      category: "signup",
+                      label: "signup",
+                    })
+                  }
                   className={`flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm bg-white ${
                     flags.contrastButtons.isEnabled()
                       ? "text-yellow-700 hover:bg-yellow-50"
@@ -42,6 +49,13 @@ const HomeHero = () => {
                 </Link>
                 <Link
                   to="/plans"
+                  onClick={() =>
+                    event({
+                      action: "viewPlans",
+                      category: "viewPlans",
+                      label: "viewPlans",
+                    })
+                  }
                   className={`flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white ${
                     flags.contrastButtons.isEnabled()
                       ? "bg-yellow-500"
