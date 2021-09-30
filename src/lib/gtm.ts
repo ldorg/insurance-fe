@@ -13,12 +13,8 @@ export const event = ({
   for (const [key, value] of Object.entries(flagStore)) {
     transformedFlagStore[key.split(".")[1]] = value;
   }
-  console.log(transformedFlagStore);
   // @ts-ignore
-  window.gtag("event", action, {
+  window.analytics.track(action, {
     ...transformedFlagStore,
-    event_category: category,
-    event_label: label,
-    value: JSON.stringify(flagStore),
   });
 };
