@@ -44,7 +44,7 @@ spec:
               path: /
               port: http
           env:
-            - name: FM_TOKEN
+            - name: FM_KEY
               value: {{ .Values.fmToken }}
             - name: BACKEND_URL
               value: {{ .Values.backendUrl }}
