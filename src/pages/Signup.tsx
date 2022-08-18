@@ -1,11 +1,16 @@
 import React from "react"
 import OldRegistrationForm from "../components/forms/registration/OldRegistrationForm"
 import NewRegistrationForm from "../components/forms/registration/NewRegistrationForm"
+import { flags } from "../lib/flags"
 
 const Login = () => {
   return (
     <div>
-      <NewRegistrationForm />
+      {flags.newQuotePage.isEnabled() ? (
+        <NewRegistrationForm />
+      ) : (
+        <OldRegistrationForm />
+      )}
     </div>
   )
 }

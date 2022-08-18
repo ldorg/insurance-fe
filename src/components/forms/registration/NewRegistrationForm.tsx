@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
+import Rox from "rox-browser"
 
 const NewRegistrationForm = () => {
   const [page, setPage] = useState(0)
@@ -7,13 +8,25 @@ const NewRegistrationForm = () => {
   return (
     <main className="border-t-8 border-blue-500">
       <div className="container mx-auto py-8">
-        <Link to="/">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8">
-            <text y="32" fontSize="32">
-              🐝
-            </text>
-          </svg>
-        </Link>
+        <div className="flex">
+          <Link to="/">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8">
+              <text y="32" fontSize="32">
+                🐝
+              </text>
+            </svg>
+          </Link>
+          <button
+            onClick={() => {
+              Rox.showOverrides()
+            }}
+            type="button"
+            className="ml-4 px-3 py-1 bg-blue-600 rounded-md text-white hover:bg-blue-700"
+          >
+            DEV
+          </button>
+        </div>
+
         {page === 0 && <Form onSubmit={() => setPage(1)} />}
         {page === 1 && <Quotes />}
       </div>
@@ -146,19 +159,41 @@ type QuoteParams = {
 }
 const Quote = ({ title, price, deductible, popular }: QuoteParams) => {
   return (
-    <div className="border-2 border-gray-200 p-4 flex justify-between">
-      <div>
-        <p className="text-xl">{title}</p>
-        <p>Deductible: {deductible}</p>
-        <p>Price: {price}/mo</p>
-        <button className="mt-2 bg-green-500 text-white px-4 py-2 hover:bg-green-600 active:bg-green-700">
-          Select
-        </button>
-      </div>
-      <div>
-        {popular && (
-          <span className="bg-green-500 text-white px-4 py-2">Popular</span>
-        )}
+    <div className="border border-gray-200 p-4 justify-between rounded-lg shadow hover:bg-gray-50">
+      <div className="flex items-center">
+        <div className="grid grid-cols-3 space-x-4 items-center flex-1">
+          <div className="flex flex-col">
+            <span className="text-xl">{title}</span>
+            {popular && (
+              <div>
+                <span className="bg-green-100 text-green-800 rounded-full px-2 py-1">
+                  Popular
+                </span>
+              </div>
+            )}
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xl font-semibold">{deductible}</span>
+            <span className="uppercase font-semibold text-xs text-gray-600">
+              Deductible
+            </span>
+          </div>
+          <div className="flex flex-col">
+            <span>
+              <span className="text-xl font-semibold">{price}</span>/mo
+            </span>
+            <span className="uppercase font-semibold text-xs text-gray-600">
+              Price
+            </span>
+          </div>
+        </div>
+        <div className="lg:flex-1">
+          <div>
+            <button className="mt-2 bg-blue-500 text-white px-4 py-2 hover:bg-blue-600 active:bg-blue-700 rounded-md float-right">
+              Select
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   )

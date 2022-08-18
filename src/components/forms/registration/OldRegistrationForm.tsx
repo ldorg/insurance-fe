@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
+import Rox from "rox-browser"
 
 const OldRegistrationForm = () => {
   const [page, setPage] = useState(0)
@@ -7,13 +8,24 @@ const OldRegistrationForm = () => {
   return (
     <main className="border-t-8 border-blue-500">
       <div className="container mx-auto py-8">
-        <Link to="/">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8">
-            <text y="32" fontSize="32">
-              🐝
-            </text>
-          </svg>
-        </Link>
+        <div className="flex">
+          <Link to="/">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8">
+              <text y="32" fontSize="32">
+                🐝
+              </text>
+            </svg>
+          </Link>
+          <button
+            onClick={() => {
+              Rox.showOverrides()
+            }}
+            type="button"
+            className="ml-4 px-3 py-1 bg-blue-600 rounded-md text-white hover:bg-blue-700"
+          >
+            DEV
+          </button>
+        </div>
         {page === 0 && <Form onSubmit={() => setPage(1)} />}
         {page === 1 && <Quotes />}
       </div>
