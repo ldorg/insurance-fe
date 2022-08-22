@@ -1,8 +1,8 @@
 import Rox from "rox-browser"
 
 export const flags = {
-  contrastButtons: new Rox.Flag(),
   newQuotePage: new Rox.Flag(),
+  contrastButtons: new Rox.Flag(),
 }
 export const flagStore: {
   [key: string]: any
@@ -12,6 +12,7 @@ const impressionHandler = (reporting: {
   name: string | number
   value: any
 }) => {
+  console.log(reporting.name)
   flagStore[reporting.name] = reporting.value
   console.log(JSON.stringify(flagStore))
 }

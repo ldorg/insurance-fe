@@ -1,6 +1,7 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import Rox from "rox-browser"
+import { event } from "../../../lib/gtm"
 
 const NewRegistrationForm = () => {
   const [page, setPage] = useState(0)
@@ -158,6 +159,7 @@ type QuoteParams = {
   popular?: boolean
 }
 const Quote = ({ title, price, deductible, popular }: QuoteParams) => {
+  const history = useHistory()
   return (
     <div className="border border-gray-200 p-4 justify-between rounded-lg shadow hover:bg-gray-50">
       <div className="flex items-center">
@@ -189,7 +191,17 @@ const Quote = ({ title, price, deductible, popular }: QuoteParams) => {
         </div>
         <div className="lg:flex-1">
           <div>
-            <button className="mt-2 bg-blue-500 text-white px-4 py-2 hover:bg-blue-600 active:bg-blue-700 rounded-md float-right">
+            <button
+              onClick={() => {
+                event({
+                  action: "select-quote",
+                  category: "quote",
+                  label: "Select Quote",
+                })
+                // history.push("/login")
+              }}
+              className="mt-2 bg-blue-500 text-white px-4 py-2 hover:bg-blue-600 active:bg-blue-700 rounded-md float-right"
+            >
               Select
             </button>
           </div>
