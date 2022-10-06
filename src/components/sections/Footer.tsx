@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 const navigation = {
   solutions: [
@@ -25,7 +25,7 @@ const navigation = {
     { name: "Privacy", href: "#" },
     { name: "Terms", href: "#" },
   ],
-};
+}
 
 const Footer = () => {
   return (
@@ -117,7 +117,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
